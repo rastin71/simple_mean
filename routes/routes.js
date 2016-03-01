@@ -1,8 +1,10 @@
 module.exports = function(app) {
 
+  var mongoose = require('mongoose');
+  mongoose.connect('mongodb://localhost/foo');
+  var Memo = require('../models/test');
   var express = require('express');
   var router = express.Router();
-  var Memo = require('../models/test');
 	
   router.get('/memos', function(req, res, next) {
     Memo.find({}, function(err, docs) {
