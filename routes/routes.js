@@ -2,8 +2,8 @@ module.exports = function(app) {
 
   var express = require('express');
   var router = express.Router();
-  var mongoose = require('mongoose');
-
+  var Memo = require('../models/test');
+	
   router.get('/memos', function(req, res, next) {
     Memo.find({}, function(err, docs) {
       if (err) { res.status(500).json({error: err}); }
