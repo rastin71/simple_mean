@@ -3,7 +3,8 @@ var Schema = mongoose.Schema;
 
 var TestSchema = new Schema({
   created: { type: Date, default: Date.now },
-  content: { type: String }
+  content: { type: String },
+  state: { type: Boolean }
 });
 
-mongoose.model('Memo', TestSchema);
+module.exports = mongoose.model('Memo', TestSchema);

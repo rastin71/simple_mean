@@ -2,9 +2,6 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var path = require('path');
 
-var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/foo');
-  var Memo = require('./models/test');
 var index = require('./routes/index');
 var app_routes = require('./routes/routes');
 
