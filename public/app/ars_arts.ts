@@ -4,19 +4,19 @@ import {Component} from 'angular2/core';
   template: `
     <h2>Arts (points: {{points}})</h2>
     <div *ngFor="#art of arts; #i = index" [class]="art.css">
-      <span>{{art.name}}</span>
+      <h4>{{art.name}}</h4>
       <div class="dec" (click)="art.dec()">-</div>
-      <input type="text" [name]="art.id" [value]="art.value">
+      <div class="value-holder">{{art.value}}<span *ngIf="art.remainder > 0">:{{art.remainder}}</span></div>
       <div class="inc" (click)="art.inc()">+</div>
     </div>`,
   styles: [`
+    h4 {float:left;}
     .tech, .form1, .form2 { width: 210px; float: left; }
     .form1 { padding-left: 10px; }
     .form2 { padding-left: 10px; clear: right; }
-    span { width: 135px; float: left; }
-    input { width: 25px; float: left; }
+    span { width: 35px; float: left; }
+    .value-holder { width: 45px; float: left; }
     .dec, .inc { float: left; width: 15px; }
-
   `]
 })
 export class ArsArts {
@@ -57,10 +57,22 @@ export class ArsArts {
     this.points += val;
   }
 
+  inc_point(): void {
+    this.points++;
+  }
+
   dec(val: number): boolean {
     if (val > this.points) return false;
     this.points -= val;
     return true;
+  }
+
+  dec_point(): boolean {
+    if (this.points > 0) {
+      this.points--;
+      return true;
+    }
+    return false;
   }
 
 }
@@ -69,25 +81,30 @@ class Art {
   name: string;
   id: string;
   value: number;
+  remainder: number;
   css: string;
 
   constructor(name: string, id: string, val: number, css: string, pref: ArsArts) {
     this.name = name;
     this.id = id;
     this.value = val;
+    this.remainder = 0;
     this.css = css;
     this.pref = pref;
   }
 
-  inc() {
+  inc(): void {
     if (this.pref.dec(this.value + 1)) this.value++;
+    else if (this.pref.dec_point()) this.remainder++;
   }
-  dec(): boolean {
-    if (this.value > 0) {
-      this.pref.inc(this.value--);
-      return true;
+  dec(): void {
+    if (this.remainder > 0) {
+      this.pref.inc_point();
+      this.remainder--;
     }
-    return false;
+    else if (this.value > 0) {
+      this.pref.inc(this.value--);
+    }
   }
 }
 
