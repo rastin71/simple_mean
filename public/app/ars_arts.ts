@@ -3,21 +3,15 @@ import {Component} from 'angular2/core';
   selector: 'ars-arts',
   template: `
     <h2>Arts (points: {{points}})</h2>
-    <div *ngFor="#art of arts; #i = index" [class]="art.css">
-      <h4>{{art.name}}</h4>
-      <div class="dec" (click)="art.dec()">-</div>
-      <div class="value-holder">{{art.value}}<span *ngIf="art.remainder > 0">:{{art.remainder}}</span></div>
-      <div class="inc" (click)="art.inc()">+</div>
+    <div class="row wrapper">
+      <div *ngFor="#art of arts; #i = index" class="col-sm-4 row">
+        <div class="art col-sm-6">{{art.name}}</div>
+        <div class="glyphicon-minus col-sm-2" (click)="art.dec()"></div>
+        <div class="value col-sm-2">{{art.value}}<span *ngIf="art.remainder > 0">:{{art.remainder}}</span></div>
+        <div class="glyphicon-plus col-sm-2" (click)="art.inc()"></div>
+      </div>
     </div>`,
-  styles: [`
-    h4 {float:left;}
-    .tech, .form1, .form2 { width: 210px; float: left; }
-    .form1 { padding-left: 10px; }
-    .form2 { padding-left: 10px; clear: right; }
-    span { width: 35px; float: left; }
-    .value-holder { width: 45px; float: left; }
-    .dec, .inc { float: left; width: 15px; }
-  `]
+  styles: [`div {border: 0pt solid black;} .art, .value { font-size: 14pt; } .value { text-align: center; } .wrapper { max-width: 750px; }`]
 })
 export class ArsArts {
   points: number = 0;
