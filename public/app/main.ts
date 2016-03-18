@@ -1,3 +1,3 @@
 import {bootstrap} from 'angular2/platform/browser';
-import {ArsArts}   from './ars_arts';
-bootstrap(ArsArts);
+import {ArsMagicaCharacter}   from './ars_magica_character';
+bootstrap(ArsMagicaCharacter);

@@ -1,4 +1,6 @@
-import {Component} from 'angular2/core';
+import {Component, Input} from 'angular2/core';
+import {Score, ScoreContainer} from './ars_score';
+
 @Component({
   selector: 'ars-arts',
   template: `
@@ -13,37 +15,36 @@ import {Component} from 'angular2/core';
     </div>`,
   styles: [`div {border: 0pt solid black;} .art, .value { font-size: 14pt; } .value { text-align: center; } .wrapper { max-width: 750px; }`]
 })
-export class ArsArts {
-  points: number = 0;
-  arts: Art[] = [];
+export class ArsArts implements ScoreContainer {
+  @Input() points: number;
+  arts: Score[] = [];
 
   data = [
-    {"id": "cr", "css": "tech", "name": "Creo", "value": 0},
-    {"id": "an", "css": "form1", "name": "Animal", "value": 0},
-    {"id": "ig", "css": "form2", "name": "Ignem", "value": 0},
+    {"id": "cr", "name": "Creo", "value": 0},
+    {"id": "an", "name": "Animal", "value": 0},
+    {"id": "ig", "name": "Ignem", "value": 0},
 
-    {"id": "in", "css": "tech", "name": "Intellego", "value": 0},
-    {"id": "aq", "css": "form1", "name": "Aquam", "value": 0},
-    {"id": "im", "css": "form2", "name": "Imagonem", "value": 0},
+    {"id": "in", "name": "Intellego", "value": 0},
+    {"id": "aq", "name": "Aquam", "value": 0},
+    {"id": "im", "name": "Imagonem", "value": 0},
 
-    {"id": "mu", "css": "tech", "name": "Muto", "value": 0},
-    {"id": "au", "css": "form1", "name": "Auram", "value": 0},
-    {"id": "me", "css": "form2", "name": "Mentem", "value": 0},
+    {"id": "mu", "name": "Muto", "value": 0},
+    {"id": "au", "name": "Auram", "value": 0},
+    {"id": "me", "name": "Mentem", "value": 0},
 
-    {"id": "pe", "css": "tech", "name": "Perdo", "value": 0},
-    {"id": "co", "css": "form1", "name": "Corporem", "value": 0},
-    {"id": "te", "css": "form2", "name": "Terram", "value": 0},
+    {"id": "pe", "name": "Perdo", "value": 0},
+    {"id": "co", "name": "Corporem", "value": 0},
+    {"id": "te", "name": "Terram", "value": 0},
 
-    {"id": "re", "css": "tech", "name": "Rego", "value": 0},
-    {"id": "he", "css": "form1", "name": "Herbem", "value": 0},
-    {"id": "vi", "css": "form2", "name": "Vim", "value": 0}
+    {"id": "re", "name": "Rego", "value": 0},
+    {"id": "he", "name": "Herbem", "value": 0},
+    {"id": "vi", "name": "Vim", "value": 0}
   ];
 
   constructor () {
-    this.points = 150;
     for (var i=0; i < this.data.length; i++) {
       var dat = this.data[i];
-      this.arts.push(new Art(dat.name, dat.id, dat.value, dat.css, this));
+      this.arts.push(new Score(dat.name, dat.id, dat.value, dat.css, this));
     }
   }
 
@@ -69,36 +70,5 @@ export class ArsArts {
     return false;
   }
 
-}
-class Art {
-  pref: ArsArts;
-  name: string;
-  id: string;
-  value: number;
-  remainder: number;
-  css: string;
-
-  constructor(name: string, id: string, val: number, css: string, pref: ArsArts) {
-    this.name = name;
-    this.id = id;
-    this.value = val;
-    this.remainder = 0;
-    this.css = css;
-    this.pref = pref;
-  }
-
-  inc(): void {
-    if (this.pref.dec(this.value + 1)) this.value++;
-    else if (this.pref.dec_point()) this.remainder++;
-  }
-  dec(): void {
-    if (this.remainder > 0) {
-      this.pref.inc_point();
-      this.remainder--;
-    }
-    else if (this.value > 0) {
-      this.pref.inc(this.value--);
-    }
-  }
 }
 
