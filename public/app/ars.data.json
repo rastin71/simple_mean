@@ -1,0 +1,21 @@
+[
+{"id": "cr", "name": "Creo", "value": 0, "remainder": 0},
+{"id": "an", "name": "Animal", "value": 0, "remainder": 0},
+{"id": "ig", "name": "Ignem", "value": 0, "remainder": 0},
+
+{"id": "in", "name": "Intellego", "value": 0, "remainder": 0},
+{"id": "aq", "name": "Aquam", "value": 0, "remainder": 0},
+{"id": "im", "name": "Imagonem", "value": 0, "remainder": 0},
+
+{"id": "mu", "name": "Muto", "value": 0, "remainder": 0},
+{"id": "au", "name": "Auram", "value": 0, "remainder": 0},
+{"id": "me", "name": "Mentem", "value": 0, "remainder": 0},
+
+{"id": "pe", "name": "Perdo", "value": 0, "remainder": 0},
+{"id": "co", "name": "Corporem", "value": 0, "remainder": 0},
+{"id": "te", "name": "Terram", "value": 0, "remainder": 0},
+
+{"id": "re", "name": "Rego", "value": 0, "remainder": 0},
+{"id": "he", "name": "Herbem", "value": 0, "remainder": 0},
+{"id": "vi", "name": "Vim", "value": 0, "remainder": 0}
+]

@@ -16,5 +16,13 @@
     "mongoose": "^4.4.4",
     "path": "^0.12.7"
   },
-  "devDependencies": {}
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rastin71/simple_mean.git"
+  },
+  "bugs": {
+    "url": "https://github.com/rastin71/simple_mean/issues"
+  },
+  "homepage": "https://github.com/rastin71/simple_mean#readme"
 }
